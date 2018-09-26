@@ -13399,6 +13399,14 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Now-let's-optimize-this-network">Now let's optimize this network<a class="anchor-link" href="#Now-let's-optimize-this-network">&#182;</a></h2><h3 id="-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-"><p style="text-align: center;"> Tree-Structured Parzen Estimators, implemented via `Hyperas` from `Hyperopt` </p><a class="anchor-link" href="#-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-">&#182;</a></h3><h4 id="-An-Expected-Improvement-algorithm-"><p style="text-align: center;"> An Expected Improvement algorithm </p><a class="anchor-link" href="#-An-Expected-Improvement-algorithm-">&#182;</a></h4><h3 id="Based-on-Algorithms-for-Hyper-Parameter-Optimization-from-Bergstra,-et.-al.,-published-in-NIPS-2011-Proceedings">Based on <a href="https://papers.nips.cc/paper/4443-algorithms-for-hyper-parameter-optimization.pdf">Algorithms for Hyper-Parameter Optimization</a> from Bergstra, <em>et. al.</em>, published in NIPS 2011 Proceedings<a class="anchor-link" href="#Based-on-Algorithms-for-Hyper-Parameter-Optimization-from-Bergstra,-et.-al.,-published-in-NIPS-2011-Proceedings">&#182;</a></h3><h3 id="This-blog-is-great!">This <a href="https://towardsdatascience.com/a-conceptual-explanation-of-bayesian-model-based-hyperparameter-optimization-for-machine-learning-b8172278050f">blog</a> is great!<a class="anchor-link" href="#This-blog-is-great!">&#182;</a></h3>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Tree-Structured-Parzen-Estimators">Tree-Structured Parzen Estimators<a class="anchor-link" href="#Tree-Structured-Parzen-Estimators">&#182;</a></h1><p><img src="https://image.slidesharecdn.com/pydatahyperparameter-180720220712/95/towards-automating-machine-learning-benchmarking-tools-for-hyperparameter-tuning-dr-thorben-jensen-12-638.jpg?cb=1532124486" alt=""></p>
 
 </div>
@@ -13408,7 +13416,102 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Now-let's-optimize-this-network">Now let's optimize this network<a class="anchor-link" href="#Now-let's-optimize-this-network">&#182;</a></h2><h3 id="-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-"><p style="text-align: center;"> Tree-Structured Parzen Estimators, implemented via `Hyperas` from `Hyperopt` </p><a class="anchor-link" href="#-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-">&#182;</a></h3><h4 id="-An-Expected-Improvement-algorithm-"><p style="text-align: center;"> An Expected Improvement algorithm </p><a class="anchor-link" href="#-An-Expected-Improvement-algorithm-">&#182;</a></h4><p><img src="TPE.png" alt="TPE" width="400"/></p>
+<h3 id="-Tree-Structured-Parzen-Estimators"><p style="text-align: center;"> Tree-Structured Parzen Estimators</p><a class="anchor-link" href="#-Tree-Structured-Parzen-Estimators">&#182;</a></h3><ul>
+<li><p>Builds a probability model of the objective (loss) function:</p>
+<p style="text-align: center;"> <img src="TPE_pseudo.png" alt="TPE_pseudo" width="400"/> </p>
+  + so as to approximate <p style="text-align: center;"> <img src="TPE_argmin.png" alt="TPE_argmin" width="300"/> </p></li>
+<li><p>Keep track of the past and become increasingly "less wrong" with hyperparameter choices
+  <p style="text-align: center;"> <img src="TPE_model.png" alt="TPE_model" width="400"/></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Now-let's-optimize-this-network">Now let's optimize this network<a class="anchor-link" href="#Now-let's-optimize-this-network">&#182;</a></h2><h3 id="-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-"><p style="text-align: center;"> Tree-Structured Parzen Estimators, implemented via `Hyperas` from `Hyperopt` </p><a class="anchor-link" href="#-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-">&#182;</a></h3><h2 id="Basic-Components-of-Sequential-Model-Based-Optimization-(SMBO)">Basic Components of Sequential Model-Based Optimization (SMBO)<a class="anchor-link" href="#Basic-Components-of-Sequential-Model-Based-Optimization-(SMBO)">&#182;</a></h2><ul>
+<li>domain of hyperparameters (search space)<ul>
+<li>probability distributions of each hyperparameter</li>
+<li>start as uniform, log uniform, Gaussian, etc. </li>
+</ul>
+</li>
+<li>objective function to minimize (loss function)</li>
+<li>surrogate model of the objective function<ul>
+<li>response surface</li>
+<li>TPE: Baye's Theorem!</li>
+</ul>
+</li>
+<li>criteria for selecting hyperparameters (selection function)<img src="TPE_selection.png" alt="TPE_selection" width="300"/></li>
+<li>history of previous trials </li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Now-let's-optimize-this-network">Now let's optimize this network<a class="anchor-link" href="#Now-let's-optimize-this-network">&#182;</a></h2><h3 id="-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-"><p style="text-align: center;"> Tree-Structured Parzen Estimators, implemented via `Hyperas` from `Hyperopt` </p><a class="anchor-link" href="#-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-">&#182;</a></h3><h4 id="-An-Expected-Improvement-algorithm-"><p style="text-align: center;"> An Expected Improvement algorithm </p><a class="anchor-link" href="#-An-Expected-Improvement-algorithm-">&#182;</a></h4><h2 id="TPE:">TPE:<a class="anchor-link" href="#TPE:">&#182;</a></h2><ul>
+<li>group the hyperparameters into tree-like structure to represent commonality (category)<ul>
+<li>contruct probability distribution for each<ul>
+<li>e.g., one distr. over each layer<ul>
+<li>individual hyperparams within each layer</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TPE uses a threshold "best" performance </li>
+<li>and constructs two different probability distributions for a given hyperparameter combination:<ul>
+<li>one that is worse than this threshold</li>
+<li>one that is better</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-"><p style="text-align: center;"> Tree-Structured Parzen Estimators, implemented via `Hyperas` from `Hyperopt` </p><a class="anchor-link" href="#-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-">&#182;</a></h3><table>
+<thead><tr>
+<th style="text-align:center">_</th>
+<th style="text-align:center">_</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="TPE.pdf" alt="TPE" width="600"/> <br><br> <p style="text-align: center;">* aim is to maximize the ratio g(x)/l(x)! </p></td>
+<td style="text-align:center"><p style="text-align: left;"> y<em> = current hypothetical "best" model performance <br><br>x = a hyperparameter combination<br><br>y = the current actual model performance (from x) <br><br>M = the posterior distribution function knowing y</em><br><br>&#947; = threshold <br><br>l(x) = the density of X surpassing threshold &#947;<br><br>g(x) = the density of X worse than &#947;</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Now-let's-optimize-this-network">Now let's optimize this network<a class="anchor-link" href="#Now-let's-optimize-this-network">&#182;</a></h2><h3 id="-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-"><p style="text-align: center;"> Tree-Structured Parzen Estimators, implemented via `Hyperas` from `Hyperopt` </p><a class="anchor-link" href="#-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-">&#182;</a></h3><h4 id="-An-Expected-Improvement-algorithm-"><p style="text-align: center;"> An Expected Improvement algorithm </p><a class="anchor-link" href="#-An-Expected-Improvement-algorithm-">&#182;</a></h4><p><img src="TPE_prob.png" alt="TPE_prob" width="400"/></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Now-let's-optimize-this-network">Now let's optimize this network<a class="anchor-link" href="#Now-let's-optimize-this-network">&#182;</a></h2><h3 id="-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-"><p style="text-align: center;"> Tree-Structured Parzen Estimators, implemented via `Hyperas` from `Hyperopt` </p><a class="anchor-link" href="#-Tree-Structured-Parzen-Estimators,-implemented-via-`Hyperas`-from-`Hyperopt`-">&#182;</a></h3><h4 id="-An-Expected-Improvement-algorithm-"><p style="text-align: center;"> An Expected Improvement algorithm </p><a class="anchor-link" href="#-An-Expected-Improvement-algorithm-">&#182;</a></h4><p><img src="TPE_performance.png" alt="TPE_performance" width="800"/></p>
 
 </div>
 </div>
